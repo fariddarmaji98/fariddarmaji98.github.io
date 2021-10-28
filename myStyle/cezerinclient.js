@@ -231,14 +231,16 @@ const POST_EXTERNAL_API = (url, data = {}) => $.ajax({
 
 
 
-const isImageExists = (image_url) => {
-  const http = new XMLHttpRequest();
+// const isImageExists = (image_url) => {
+//   const http = new XMLHttpRequest();
 
-  http.open('HEAD', image_url, false);
-  http.send();
+//   http.open('HEAD', image_url, false);
+//   http.send();
 
-  return http.status != 404;
-}
+//   return http.status != 404;
+// }
+
+const isImageExists = (image_url) => true;
 
 
 
