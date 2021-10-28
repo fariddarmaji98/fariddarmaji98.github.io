@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portal Service</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="./plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./dist/css/adminlte.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    .card-body {
+      display: flex;
+      flex-direction: column;
+    }
+    .card-price {
+      color: rgb(235, 76, 76);
+    }
+    .card-stock {
+      color: rgb(48, 118, 184);
+    }
+    .limit-text {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;  
+      overflow: hidden;
+    }
+    .card-img-top {
+      width: 288px;
+      height: 288px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body class="hold-transition login-page" style="padding: 20px 0;">
+  <div id="loadingWrapper"></div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="min-width: 95vw; max-width: 95vw;">
+    <a class="navbar-brand" href="javascript:void(0)">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="javascript:void(0)" id="link-home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" id="link-order-history">Order History</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" id="link-tracking">Tracking</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" id="link-profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" id="link-logout">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" id="link-login">Login</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="login-logo">
+    <br />
+    <a href="javascript:void(0)"><b>Product</b>Service</a>
+  </div>
+  
+  <div class="row">
+    <div class="col-12" id="productContent">
+      
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://codev98.xyz/img/data-not-found.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title limit-text">Card title</h5>
+          <span class="card-price">Rp. <b>7000</b></span>
+          <span class="card-stock">Tersisa <b>7</b></span>
+          <p class="card-text limit-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div class="row">
+            <div class="col-12 d-flex justify-content-end">
+              <a href="javascript:void(0)" class="btn btn-info" data-toggle="modal" data-target="#product1">Detail</a>
+              <a href="javascript:void(0)" class="btn btn-warning" style="margin-left: 6px;">Add to cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="product1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Product detail</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <img class="card-img-top" src="https://codev98.xyz/img/data-not-found.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <span class="card-price">Rp. <b>7000</b></span>
+                <span class="card-stock">Tersisa <b>7</b></span>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="row">
+                  <div class="col-12 d-flex justify-content-end">
+                    <a href="javascript:void(0)" class="btn btn-info">Detail</a>
+                    <a href="javascript:void(0)" class="btn btn-warning" style="margin-left: 6px;">Add to cart</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script src="./plugins/jquery/jquery.min.js"></script>
+<script src="./plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="./dist/js/adminlte.min.js"></script>
+<script src="./myStyle/cezerinclient.js"></script>
+<script src="./myStyle/home.js"></script>
+</body>
+</html>

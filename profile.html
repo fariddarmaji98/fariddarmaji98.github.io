@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portal Service</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="./plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./dist/css/adminlte.min.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <style>
+    .card-body {
+      display: flex;
+      flex-direction: column;
+    }
+    .card-price {
+      color: rgb(235, 76, 76);
+    }
+    .card-stock {
+      color: rgb(48, 118, 184);
+    }
+    .limit-text {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;  
+      overflow: hidden;
+    }
+    .card-profile {
+      min-width: 320px;
+    }
+    .nav-pills {
+      justify-content: center;
+    }
+  </style>
+</head>
+<body class="hold-transition login-page" style="padding: 20px 0;">
+  <div id="loadingWrapper"></div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="min-width: 95vw; max-width: 95vw;">
+    <a class="navbar-brand" href="javascript:void(0)">Profile</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="javascript:void(0)" id="link-home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" id="link-order-history">Order History</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" id="link-tracking">Tracking</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" id="link-profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" id="link-logout">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" id="link-login">Login</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="login-logo">
+    <br />
+    <a href="javascript:void(0)"><b>Profile</b>Data</a>
+  </div>
+
+  <div class="card card-profile" id="card1Content"></div>
+
+  <div class="card card-primary card-outline card-profile" id="card2Content"></div>
+
+<script src="./plugins/jquery/jquery.min.js"></script>
+<script src="./plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="./dist/js/adminlte.min.js"></script>
+<script src="./myStyle/cezerinclient.js"></script>
+<script src="./myStyle/profile.js"></script>
+</body>
+</html>

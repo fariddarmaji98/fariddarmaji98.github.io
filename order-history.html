@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portal Service</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="./plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./dist/css/adminlte.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    .card-body .;
+      flex-direction: column;
+    }
+    .card-price {
+      color: rgb(235, 76, 76);
+    }
+    .card-stock {
+      color: rgb(48, 118, 184);
+    }
+    .limit-text {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;  
+      overflow: hidden;
+    }
+    .card-profile {
+      min-width: 95%;
+      max-width: 95%;
+      /* border: 1px solid rgb(248, 120, 120); */
+    }
+    .box-order {
+      padding: 10px;
+    }
+  </style>
+</head>
+<body class="hold-transition login-page" style="padding: 20px 0;">
+  <div id="loadingWrapper"></div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="min-width: 95vw; max-width: 95vw;">
+    <a class="navbar-brand" href="javascript:void(0)">Order History</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="javascript:void(0)" id="link-home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" id="link-order-history">Order History</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" id="link-tracking">Tracking</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" id="link-profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" id="link-logout">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" id="link-login">Login</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="login-logo">
+    <br />
+    <a href="javascript:void(0)"><b>Order</b>History</a>
+  </div>
+
+  <div id="modalContent">
+    <div class="modal fade" id="orderDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Order detail</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card-body">
+              <ul class="timeline-body list-group list-group-unbordered mb-3">
+                <li class="list-group-item">
+                  <a class="float-left">${data.ttl || '-'}</a>
+                </li>
+                <li class="list-group-item">
+                  <a class="float-left">${data.no_telp || '-'}</a>
+                </li>
+                <li class="list-group-item">
+                  <h5 class="card-title">Nama product</h5>
+                  <span class="card-stock">&nbsp;<b>(2)</b></span>
+                  <span class="card-price float-right">Rp. <b>7000</b></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-profile" id="orderContent">
+    <div class="card box-order">
+      <div class="timeline-item">
+        <span class="time"><i class="fas fa-clock"></i> 12:05</span>
+        <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
+
+        <ul class="timeline-body list-group list-group-unbordered mb-3">
+          <li class="list-group-item">
+            ID Cart <a class="float-right">${data.ttl || '-'}</a>
+          </li>
+          <li class="list-group-item">
+            Status pesanan <a class="float-right">${data.no_telp || '-'}</a>
+          </li>
+          <li class="list-group-item">
+            Total tagihan <a class="float-right">${data.email || '-'}</a>
+          </li>
+        </ul>
+
+        <div class="timeline-footer" style="text-align: right;">
+          <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#orderDetail">Detail</a>
+          <a class="btn btn-danger btn-sm">Cencel</a>
+          <a class="btn btn-primary btn-sm">Confirmation</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="./plugins/jquery/jquery.min.js"></script>
+<script src="./plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="./dist/js/adminlte.min.js"></script>
+<script src="./myStyle/cezerinclient.js"></script>
+<script src="./myStyle/order-history.js"></script>
+</body>
+</html>
