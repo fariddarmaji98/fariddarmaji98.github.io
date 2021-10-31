@@ -212,6 +212,70 @@ const handleAddToCart = (index, id_product, product_price, product_stock) => {
   .catch(err => swalNotification(`There is some problem, please contact admin.`, 'error'));
 }
 
+const renderProductCard = (data, index) => {
+  const formatName = data.product_name.charAt(0).toUpperCase() + data.product_name.slice(1);
+
+  productContentDOM.innerHTML += `
+  <div class="card card-box-costume">
+    <img class="card-img-top" src="${BASE_API}/${data.product_image}" alt="Card image cap">
+    <div class="card-body pl-2 pr-2 pt-1 pb-2">
+      <span class="h5 text-secondary mb-0">${formatName}</span>
+      <!-- <p class="card-text limit-text mb-0">${data.product_detail}</p> -->
+      <span class="card-price">Rp. <b>${data.product_price}</b></span>
+      <span class="card-stock">Stock <b>${data.product_stock}</b></span>
+      <div class="row pt-2">
+        <div class="col-12 d-flex justify-content-end">
+          <a href="javascript:void(0)" class="btn btn-sm btn-info" data-toggle="modal" data-target="#productDetail${index+1}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info" viewBox="0 0 16 16">
+              <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+          </a>
+          <a 
+            href="javascript:void(0)" 
+            class="btn btn-sm btn-warning btn-add-cart${index+1}" 
+            onclick="handleAddToCart(${index+1}, '${data.id_product}', ${data.product_price}, ${data.product_stock})" 
+            style="margin-left: 6px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+              <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+              <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="productDetail${index+1}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Product detail</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img class="card-img-top" src="./img/data-not-found.jpg" alt="Card image cap">
+          <div class="card-body">
+            <span class="h4 text-secondary mb-0">${data.product_name}</span>
+            <span class="card-price">Rp. <b>${data.product_price}</b></span>
+            <span class="card-stock">Tersisa <b>${data.product_stock}</b></span>
+            <br />
+            <p class="card-text">${data.product_detail}</p>
+            <!-- <div class="row">
+              <div class="col-12 d-flex justify-content-end">
+                <button href="javascript:void(0)" class="btn btn-warning btn-add-cart${index+1}"
+                  onclick="handleAddToCart(${index+1}, '${data.id_product}', ${data.product_price}, ${data.product_stock})" 
+                  style="margin-left: 6px;">Add to cart</button>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
 const handleGet = ($html = '') => {
 
   handleLoadingRequest(true);
@@ -229,78 +293,20 @@ const handleGet = ($html = '') => {
       for (let i = 0; i < data.length; i++) {
         const isImage = isImageExists(`${BASE_API}/${data[i].product_image}`);  
 
+        
         isImageExistsV2(`${BASE_API}/${data[i].product_image}`).then(
           (ress) => {
-            console.log(`===> ress ${BASE_API}/${data[i].product_image}`)
+            data[i].product_image = data[i].product_image; 
+            renderProductCard(data[i], i);
           },
           (err) => {
-            console.log(`===> err ${BASE_API}/${data[i].product_image}`)
+            data[i].product_image = 'img/data-not-found.jpg';
+            renderProductCard(data[i], i);
           }
         );
 
-        $html += `        
-        <div class="card card-box-costume">
-          <img class="card-img-top" src="${BASE_API}/${isImage ? data[i].product_image : 'img/data-not-found.jpg'}" alt="Card image cap">
-          <div class="card-body pl-2 pr-2 pt-1 pb-2">
-            <h5 class="card-title limit-text">${data[i].product_name}</h5>
-            <p class="card-text limit-text mb-0">${data[i].product_detail}</p>
-            <span class="card-price">Rp. <b>${data[i].product_price}</b></span>
-            <div class="row">
-              <div class="col-6 pl-2 d-flex flex-column justify-content-center">
-                <span class="card-stock">Stock <b>${data[i].product_stock}</b></span>
-              </div>
-              <div class="col-6 d-flex justify-content-end">
-                <a href="javascript:void(0)" class="btn btn-sm btn-info" data-toggle="modal" data-target="#productDetail${i+1}">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info" viewBox="0 0 16 16">
-                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                  </svg>
-                </a>
-                <a 
-                  href="javascript:void(0)" 
-                  class="btn btn-sm btn-warning btn-add-cart${i+1}" 
-                  onclick="handleAddToCart(${i+1}, '${data[i].id_product}', ${data[i].product_price}, ${data[i].product_stock})" 
-                  style="margin-left: 6px;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
-                    <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
-                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal fade" id="productDetail${i+1}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Product detail</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <img class="card-img-top" src="./img/data-not-found.jpg" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">${data[i].product_name}</h5>
-                  <span class="card-price">Rp. <b>${data[i].product_price}</b></span>
-                  <span class="card-stock">Tersisa <b>${data[i].product_stock}</b></span>
-                  <p class="card-text">${data[i].product_detail}</p>
-                  <!-- <div class="row">
-                    <div class="col-12 d-flex justify-content-end">
-                      <button href="javascript:void(0)" class="btn btn-warning btn-add-cart${i+1}"
-                        onclick="handleAddToCart(${i+1}, '${data[i].id_product}', ${data[i].product_price}, ${data[i].product_stock})" 
-                        style="margin-left: 6px;">Add to cart</button>
-                    </div>
-                  </div> -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>`;
       }
 
-      productContentDOM.innerHTML = $html;
       handleLoadingRequest(false);
     }
     else {
