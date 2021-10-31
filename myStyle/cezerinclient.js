@@ -8,7 +8,7 @@ const API_BYPASS_CORS = {
 
 // const BASE_API = 'http://localhost:3001';
 // const BASE_API = 'https://serverv1.codev98.xyz';
-const BASE_API = 'https://1ba9-223-255-230-36.ngrok.io';
+const BASE_API = 'http://309e-180-242-131-152.ngrok.io';
 
 const SESSION_API = '/portal/check/token';
 const LOGIN_ACTION_API = '/portal/go/login';
