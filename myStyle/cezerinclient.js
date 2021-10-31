@@ -3,11 +3,13 @@
 
 const API_CHECK_SHIPPER = 'https://pluginongkoskirim.com/cek-tarif-ongkir/front/resi-amp?__amp_source_origin=https%3A%2F%2Fpluginongkoskirim.com';
 const API_BYPASS_CORS = {
-  CORS_ANYWHERE: 'https://cors-anywhere.herokuapp.com/'
+  // CORS_ANYWHERE: 'https://cors-anywhere.herokuapp.com/',
+  CORS_ANYWHERE: 'https://code-v1.herokuapp.com/',
 }
 
 // const BASE_API = 'http://localhost:3001';
-const BASE_API = 'https://serverv1.codev98.xyz';
+// const BASE_API = 'https://serverv1.codev98.xyz';
+const BASE_API = 'https://309e-180-242-131-152.ngrok.io';
 
 const SESSION_API = '/portal/check/token';
 const LOGIN_ACTION_API = '/portal/go/login';
@@ -240,7 +242,20 @@ const POST_EXTERNAL_API = (url, data = {}) => $.ajax({
 //   return http.status != 404;
 // }
 
-const isImageExists = (image_url) => true
+const isImageExists = (image_url) => true;
+
+const isImageExistsV2 = (image_url) => new Promise((resolve, reject) => {
+  const imgElement = new Image();
+  imgElement.addEventListener('load', () => {
+    resolve(this);
+  });
+
+  imgElement.addEventListener('error', () => {
+    reject();
+  })
+
+  imgElement.src = image_url;
+})
 
 
 
