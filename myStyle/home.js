@@ -255,7 +255,7 @@ const renderProductCard = (data, index) => {
           </button>
         </div>
         <div class="modal-body">
-          <img class="card-img-top" src="./img/data-not-found.jpg" alt="Card image cap">
+          <img class="card-img-top" src="${BASE_API}/${data.product_image}" alt="Card image cap">
           <div class="card-body">
             <span class="h4 text-secondary mb-0">${data.product_name}</span>
             <span class="card-price">Rp. <b>${data.product_price}</b></span>
