@@ -7,9 +7,9 @@ const API_BYPASS_CORS = {
   CORS_ANYWHERE: 'https://code-v1.herokuapp.com/',
 }
 
-// const BASE_API = 'http://localhost:3001';
+const BASE_API = 'http://localhost:3001';
 // const BASE_API = 'https://serverv1.codev98.xyz';
-const BASE_API = 'https://309e-180-242-131-152.ngrok.io';
+// const BASE_API = 'https://309e-180-242-131-152.ngrok.io';
 
 const SESSION_API = '/portal/check/token';
 const LOGIN_ACTION_API = '/portal/go/login';
@@ -30,6 +30,12 @@ const PRODUCT_GET_API = '/product/read';
 const PRODUCT_POST_API = '/product/add';
 const PRODUCT_PUT_API = '/product/change';
 const PRODUCT_DELL_API = '/product/delete';
+const PRODUCT_SEARCH_API = '/product/search';
+// CATEGORY
+const CATEGORY_GET_API = '/category/read';
+const CATEGORY_POST_API = '/category/add';
+const CATEGORY_PUT_API = '/category/change';
+const CATEGORY_DELL_API = '/category/delete';
 // CART
 const CART_USER_GET_API = '/join/cart';
 const CART_INFO_GET_API = '/join/cart/status';

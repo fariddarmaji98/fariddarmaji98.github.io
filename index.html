@@ -96,12 +96,50 @@
     </div>
   </nav>
 
-  <div class="login-logo">
-    <br />
-    <a href="javascript:void(0)"><b>Product</b>Service</a>
+  <style>
+    .wrapper-size {
+      min-width: 95vw;
+      max-width: 95vw;
+    }
+    .category-wrapper {
+      overflow-y: auto;
+      margin: 0 10px;
+      padding: 4px 0 10px 0;
+    }
+    .tab-pane.active {
+      display: flex;
+    }
+    .costume-input-search {
+      border-top-right-radius: 0px !important;
+      border-bottom-right-radius: 0px !important;
+      border: 1px solid transparent;
+    }
+    .costume-btn-search {
+      border-top-left-radius: 0px !important;
+      border-bottom-left-radius: 0px !important;
+    }
+  </style>
+  <div class="container-fluid wrapper-size mt-4">
+    <div class="input-group rounded border">
+      <input type="search" id="input_search" class="form-control rounded costume-input-search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+      <button class="btn input-group-text costume-btn-search border bg-white" onclick="handleSearch()">
+        <i class="fas fa-search"></i>
+      </span>
+    </div>
+  </div>
+  <div class="container-fluid wrapper-size d-flex category-wrapper mt-4">
+    <ul class="nav nav-pills d-flex" style="gap: 8px; flex-wrap: unset;" id="category-content" onclick="showSearchContent(false)"></ul>
   </div>
 
-  <div class="container-fluid d-flex flex-wrap p-0" id="productContent"></div>
+  <div class="login-logo mt-3">
+    <a href="javascript:void(0)"><b>Product</b>Service</a>
+  </div>
+  <div class="container-fluid d-none" id="productSearchWrapper">
+    <div class="flex-wrap justify-content-between p-0" id="productSearch">
+
+    </div>
+  </div>
+  <div class="container-fluid tab-content" id="productContent"></div>
 
   
   <!-- <div class="row">
