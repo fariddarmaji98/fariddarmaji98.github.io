@@ -7,9 +7,9 @@ const API_BYPASS_CORS = {
   CORS_ANYWHERE: 'https://code-v1.herokuapp.com/',
 }
 
-const BASE_API = 'http://localhost:3001';
+// const BASE_API = 'http://localhost:3001';
 // const BASE_API = 'https://serverv1.codev98.xyz';
-// const BASE_API = 'https://309e-180-242-131-152.ngrok.io';
+const BASE_API = 'https://fc79-180-243-10-207.ngrok.io';
 
 const SESSION_API = '/portal/check/token';
 const LOGIN_ACTION_API = '/portal/go/login';
