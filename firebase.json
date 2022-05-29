@@ -1,0 +1,6 @@
+{
+  "hosting": {
+    "site": "tictactoe-code",
+    "public": "public",
+  }
+}
